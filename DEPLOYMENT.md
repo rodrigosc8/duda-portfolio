@@ -39,11 +39,20 @@ Para deployment gratuito direto do GitHub.
 
 #### Passos:
 
-1. Adiciona o package.json base URL se necessário
-2. Faz push para a branch main/master
-3. Vai a Settings > Pages
-4. Seleciona "GitHub Actions"
-5. Cria um `.github/workflows/deploy.yml` com o script de build
+1. Confirma que o `vite.config.js` tem `base: "/duda-portfolio/"`.
+2. Faz commit e push para a branch `main`.
+3. Vai ao GitHub: `Settings > Pages`.
+4. Em `Build and deployment`, escolhe `GitHub Actions`.
+5. O workflow `.github/workflows/deploy.yml` faz automaticamente:
+   - instala dependências com `npm ci`
+   - gera o site com `npm run build`
+   - publica a pasta `dist`
+
+Depois do primeiro deploy, o site fica disponível em:
+
+```text
+https://rodrigosc8.github.io/duda-portfolio/
+```
 
 ### 4. Servidor Próprio (VPS/Hosting Tradicional)
 
