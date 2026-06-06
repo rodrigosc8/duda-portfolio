@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #5b2b45;
+  background: #fffaf8;
+  font-family: "Manrope", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 250, 248, 0.92)),
+    url("/assets/collage/paper-texture.jpg");
+  background-size: cover, 320px;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, repeat;
+  color: #5b2b45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(221, 28, 93, 0.18);
+  color: #5b2b45;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-[1480px] px-5 sm:px-7 lg:px-10;
+  }
+
+  .paper-card {
+    @apply rounded-[2rem] border border-white/60 bg-white/75 shadow-paper backdrop-blur-sm;
+  }
+
+  .section-kicker {
+    @apply text-xs font-extrabold uppercase tracking-[0.3em] text-cherry/70;
+  }
+
+  .hand-title {
+    @apply font-script text-cherry drop-shadow-[0_5px_6px_rgba(105,27,58,0.22)];
+  }
+
+  .polaroid {
+    @apply rounded-[0.75rem] border border-[#f3e4e7] bg-[#fffaf7] p-3 shadow-polaroid;
+  }
+
+  .ink-copy {
+    @apply text-sm leading-7 text-ink/90 sm:text-base;
+  }
+}
