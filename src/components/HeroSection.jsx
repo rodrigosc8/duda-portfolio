@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDownIcon, CameraIcon, PencilIcon, PhoneIcon } from "./icons";
 import { MaskedAsset } from "./MaskedAsset";
 import { heroHighlights } from "../data/siteContent";
+import { assetPath } from "../utils/assets";
 
 const iconMap = {
   pencil: PencilIcon,
@@ -73,7 +74,7 @@ export function HeroSection() {
                 className="relative flex w-full justify-center lg:-mr-8 lg:justify-end"
               >
                 <img
-                  src="/assets/Portfólio/site/duda-hero-cutout.png"
+                  src={assetPath("/assets/Portfólio/site/duda-hero-cutout.png")}
                   alt="Duda Terra"
                   className="w-[min(100%,42rem)] object-contain drop-shadow-[0_28px_34px_rgba(132,35,76,0.22)]"
                 />

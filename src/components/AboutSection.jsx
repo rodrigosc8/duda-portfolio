@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { aboutParagraphs } from "../data/siteContent";
 import { MaskedAsset } from "./MaskedAsset";
+import { assetPath } from "../utils/assets";
 
 export function AboutSection() {
   return (
@@ -51,12 +52,12 @@ export function AboutSection() {
               className="relative mx-auto flex min-h-[30rem] w-full max-w-[24rem] items-center justify-center py-4"
             >
               <img
-                src="/assets/Portfólio/site/about-banana-polaroid.png"
+                src={assetPath("/assets/Portfólio/site/about-banana-polaroid.png")}
                 alt="Duda a segurar um telefone em forma de banana"
                 className="absolute right-2 top-0 w-[72%] rotate-[8deg] object-contain drop-shadow-[0_18px_22px_rgba(91,43,69,0.18)]"
               />
               <img
-                src="/assets/Portfólio/site/about-cart-polaroid.png"
+                src={assetPath("/assets/Portfólio/site/about-cart-polaroid.png")}
                 alt="Duda dentro de um carrinho de compras"
                 className="absolute bottom-0 left-1 w-[78%] rotate-[-10deg] object-contain drop-shadow-[0_18px_22px_rgba(91,43,69,0.2)]"
               />

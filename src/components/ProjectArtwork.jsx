@@ -1,3 +1,5 @@
+import { assetPath } from "../utils/assets";
+
 function DecorativeStars() {
   return (
     <>
@@ -18,7 +20,7 @@ export function ProjectArtwork({ project }) {
       return (
         <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fff9f6_0%,#f7dbe5_100%)]">
           <img
-            src={project.image}
+            src={assetPath(project.image)}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 h-full w-full scale-110 object-cover opacity-[0.14] blur-md"
@@ -29,7 +31,7 @@ export function ProjectArtwork({ project }) {
           <div className="absolute inset-0 flex items-center justify-center px-8 py-5">
             <div className="relative h-full max-h-[92%] aspect-[7/20] overflow-hidden rounded-[1.35rem] border border-white/80 bg-white shadow-[0_18px_34px_rgba(91,43,69,0.16)]">
               <img
-                src={project.image}
+                src={assetPath(project.image)}
                 alt={project.title}
                 className="h-full w-full object-contain"
               />
@@ -41,7 +43,7 @@ export function ProjectArtwork({ project }) {
 
     return (
       <img
-        src={project.image}
+        src={assetPath(project.image)}
         alt={project.title}
         className={`h-full w-full transition duration-500 group-hover:scale-[1.04] ${
           fit === "contain" ? "bg-[#fffaf7] object-contain p-4" : "object-cover"

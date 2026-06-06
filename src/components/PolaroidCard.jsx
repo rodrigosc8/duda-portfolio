@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ProjectArtwork } from "./ProjectArtwork";
+import { assetPath } from "../utils/assets";
 
 export function PolaroidCard({ project, tilt = 0, onOpen }) {
   const fit = project.imageFit ?? "cover";
@@ -20,7 +21,7 @@ export function PolaroidCard({ project, tilt = 0, onOpen }) {
           </div>
         ) : (
           <img
-            src={project.image}
+            src={assetPath(project.image)}
             alt={project.title}
             className={`aspect-[4/4.2] w-full transition duration-500 group-hover:scale-[1.04] ${
               fit === "contain" ? "bg-[#fffaf7] object-contain p-4" : "object-cover"

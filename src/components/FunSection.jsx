@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { obsessionItems, toolPlateItems } from "../data/siteContent";
+import { assetPath } from "../utils/assets";
 
 function FloatingImage({ src, alt = "", className = "", imageClassName = "", rotate = 0 }) {
   return (
     <div className={`absolute ${className}`}>
       <img
-        src={src}
+        src={assetPath(src)}
         alt={alt}
         className={`h-full w-full object-contain drop-shadow-[0_18px_18px_rgba(91,43,69,0.14)] ${imageClassName}`}
         style={{ transform: `rotate(${rotate}deg)` }}
@@ -18,7 +19,7 @@ function ToolSticker({ item }) {
   return (
     <div className={`absolute flex items-center justify-center ${item.className}`}>
       <img
-        src={item.image}
+        src={assetPath(item.image)}
         alt={item.label}
         className="h-14 w-14 object-contain drop-shadow-[0_12px_12px_rgba(91,43,69,0.18)] sm:h-16 sm:w-16"
         style={{ transform: `rotate(${item.rotate}deg)` }}
@@ -46,27 +47,27 @@ export function FunSection() {
             </h3>
             <div className="relative mx-auto mt-5 h-[25rem] max-w-[42rem] sm:h-[28rem]">
               <FloatingImage
-                src="/assets/Portfólio/site/girl-dinner-napkin.png"
+                src={assetPath("/assets/Portfólio/site/girl-dinner-napkin.png")}
                 className="left-[12%] top-[9.4rem] h-44 w-44 sm:left-[15%] sm:top-[10rem] sm:h-52 sm:w-52"
                 rotate={-15}
               />
               <FloatingImage
-                src="/assets/Portfólio/site/girl-dinner-plate.png"
+                src={assetPath("/assets/Portfólio/site/girl-dinner-plate.png")}
                 className="left-1/2 top-[3.2rem] h-[18.5rem] w-[18.5rem] -translate-x-1/2 sm:h-[22rem] sm:w-[22rem]"
                 rotate={-4}
               />
               <FloatingImage
-                src="/assets/Portfólio/site/girl-dinner-fork.png"
+                src={assetPath("/assets/Portfólio/site/girl-dinner-fork.png")}
                 className="left-[3%] top-[11rem] h-36 w-36 sm:left-[7%] sm:top-[12rem] sm:h-44 sm:w-44"
                 rotate={-23}
               />
               <FloatingImage
-                src="/assets/Portfólio/site/girl-dinner-knife.png"
+                src={assetPath("/assets/Portfólio/site/girl-dinner-knife.png")}
                 className="right-[10%] top-[8.4rem] h-36 w-36 sm:right-[16%] sm:top-[9.2rem] sm:h-44 sm:w-44"
                 rotate={11}
               />
               <FloatingImage
-                src="/assets/Portfólio/site/girl-dinner-juice.png"
+                src={assetPath("/assets/Portfólio/site/girl-dinner-juice.png")}
                 className="right-[5%] top-[2rem] h-24 w-24 sm:right-[10%] sm:h-32 sm:w-32"
                 rotate={6}
               />
@@ -102,7 +103,7 @@ export function FunSection() {
                 >
                   <div style={{ transform: `rotate(${item.rotate}deg)` }}>
                     <img
-                      src={item.image}
+                      src={assetPath(item.image)}
                       alt={item.name}
                       className="h-28 w-28 animate-float object-contain drop-shadow-[0_14px_16px_rgba(91,43,69,0.13)] sm:h-36 sm:w-36"
                     />

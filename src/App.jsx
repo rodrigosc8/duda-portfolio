@@ -10,6 +10,7 @@ import { SelectedWorkSection } from "./components/SelectedWorkSection";
 import { WhyCreateSection } from "./components/WhyCreateSection";
 import { WorkSection } from "./components/WorkSection";
 import { projects } from "./data/projects";
+import { assetUrl } from "./utils/assets";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -24,6 +25,10 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = "pt-PT";
+    document.documentElement.style.setProperty(
+      "--paper-texture-url",
+      assetUrl("/assets/collage/paper-texture.jpg"),
+    );
   }, []);
 
   const selectedWork = projects.filter((project) => project.selected);

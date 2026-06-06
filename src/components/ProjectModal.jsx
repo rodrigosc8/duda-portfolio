@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProjectArtwork } from "./ProjectArtwork";
+import { assetPath, resolveAssetUrls } from "../utils/assets";
 
 function hexToRgba(hex, alpha) {
   const fallback = "dd1c5d";
@@ -88,7 +89,7 @@ function Thumb({ image, active, onClick, accent, index, fit = "cover" }) {
         }}
       >
         <img
-          src={image}
+          src={assetPath(image)}
           alt=""
           className={`aspect-[4/3] w-full rounded-[0.72rem] ${
             fit === "contain" ? "bg-[#fbf5f2] object-contain p-2" : "object-cover"
@@ -105,7 +106,7 @@ function MediaCard({ project, activeImage, accent, fit = "cover" }) {
       {activeImage ? (
         <motion.img
           key={activeImage}
-          src={activeImage}
+          src={assetPath(activeImage)}
           alt={project.title}
           initial={{ opacity: 0, y: 8, scale: 0.992 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -164,8 +165,9 @@ export function ProjectModal({ project, onClose }) {
               transition={{ duration: 0.26, ease: "easeOut" }}
               className="relative my-2 w-full max-w-[900px] overflow-hidden rounded-[2.2rem] border border-white/72 shadow-[0_28px_70px_rgba(58,18,36,0.32)] lg:max-h-[calc(100vh-3rem)]"
               style={{
-                backgroundImage:
+                backgroundImage: resolveAssetUrls(
                   'linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,249,245,0.98)), url("/assets/collage/paper-texture.jpg")',
+                ),
                 backgroundSize: "auto, 320px",
                 backgroundRepeat: "no-repeat, repeat",
               }}

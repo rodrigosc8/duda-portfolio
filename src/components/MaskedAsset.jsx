@@ -1,3 +1,5 @@
+import { assetPath, assetUrl, resolveAssetUrls } from "../utils/assets";
+
 export function MaskedAsset({
   image,
   backgroundImage,
@@ -14,7 +16,8 @@ export function MaskedAsset({
   rotate = 0,
   style = {},
 }) {
-  const resolvedBackgroundImage = backgroundImage ?? (image ? `url(${image})` : undefined);
+  const resolvedBackgroundImage = resolveAssetUrls(backgroundImage ?? (image ? assetUrl(image) : undefined));
+  const resolvedMask = mask ? assetPath(mask) : undefined;
 
   return (
     <div
@@ -28,8 +31,8 @@ export function MaskedAsset({
         backgroundSize,
         backgroundPosition,
         backgroundBlendMode,
-        WebkitMaskImage: mask ? `url(${mask})` : undefined,
-        maskImage: mask ? `url(${mask})` : undefined,
+        WebkitMaskImage: resolvedMask ? assetUrl(resolvedMask) : undefined,
+        maskImage: resolvedMask ? assetUrl(resolvedMask) : undefined,
         WebkitMaskRepeat: mask ? maskRepeat : undefined,
         maskRepeat: mask ? maskRepeat : undefined,
         WebkitMaskSize: mask ? maskSize ?? "100% 100%" : undefined,
