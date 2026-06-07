@@ -21,6 +21,7 @@ function FilterButton({ active, label, onClick }) {
 
 export function WorkSection({ projects, onOpen }) {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [previewProjectId, setPreviewProjectId] = useState(null);
 
   const filteredProjects =
     activeCategory === "all"
@@ -39,13 +40,14 @@ export function WorkSection({ projects, onOpen }) {
         >
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="section-kicker">Arquivo de projetos</p>
+              <p className="section-kicker">Portfólio de projetos</p>
               <h2 className="mt-3 font-script text-[clamp(3.2rem,6vw,5.3rem)] leading-none text-cherry">
                 Mais coisas em que tenho andado a trabalhar.
               </h2>
               <p className="mt-4 max-w-[42rem] ink-copy">
-                Explora projetos de design de interface, campanhas, fotografia e editorial,
-                construídos com estratégia, narrativa e uma linguagem visual divertida.
+                Explora os projetos de design de interfaces, programação, redes sociais, vídeo,
+                fotografia e design gráfico, construídos com estratégia, narrativa e sobretudo,
+                com muita dedicação.
               </p>
             </div>
 
@@ -75,11 +77,15 @@ export function WorkSection({ projects, onOpen }) {
                   key={project.id}
                   type="button"
                   onClick={() => onOpen(project)}
+                  onBlur={() => setPreviewProjectId(null)}
+                  onFocus={() => setPreviewProjectId(project.id)}
+                  onMouseEnter={() => setPreviewProjectId(project.id)}
+                  onMouseLeave={() => setPreviewProjectId(null)}
                   whileHover={{ y: -8, rotate: -0.3 }}
                   className="group overflow-hidden rounded-[2rem] border border-white/65 bg-white/75 text-left shadow-paper backdrop-blur-sm"
                 >
-                  <div className="relative aspect-[5/4] overflow-hidden">
-                    <ProjectArtwork project={project} />
+                  <div className="relative h-[20.5rem] overflow-hidden sm:h-[21.5rem] xl:h-[21rem]">
+                    <ProjectArtwork project={project} previewActive={previewProjectId === project.id} />
                     <div
                       className="absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-white shadow-sticker"
                       style={{ backgroundColor: project.accent }}

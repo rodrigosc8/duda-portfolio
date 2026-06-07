@@ -10,6 +10,7 @@ import { WhyCreateSection } from "./components/WhyCreateSection";
 import { WorkSection } from "./components/WorkSection";
 import { projects } from "./data/projects";
 import { assetUrl } from "./utils/assets";
+import { sortProjectsByYear } from "./utils/projects";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -30,7 +31,8 @@ function App() {
     );
   }, []);
 
-  const selectedWork = projects.filter((project) => project.selected);
+  const sortedProjects = sortProjectsByYear(projects);
+  const selectedWork = sortedProjects.filter((project) => project.selected);
 
   return (
     <div className="relative overflow-x-hidden">
@@ -43,7 +45,7 @@ function App() {
         <SelectedWorkSection projects={selectedWork} onOpen={setSelectedProject} />
         <AboutSection />
         <WhyCreateSection />
-        <WorkSection projects={projects} onOpen={setSelectedProject} />
+        <WorkSection projects={sortedProjects} onOpen={setSelectedProject} />
         <ContactSection />
       </main>
 

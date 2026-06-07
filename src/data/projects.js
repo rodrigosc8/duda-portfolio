@@ -1,6 +1,6 @@
 export const projectCategories = [
   { id: "all", label: "Todos" },
-  { id: "design-programming", label: "Design e Programação" },
+  { id: "design-programming", label: "Design de interfaces e programação" },
   { id: "social-media", label: "Estratégia para Redes Sociais" },
   { id: "video-photo", label: "Vídeo e Fotografia" },
   { id: "graphic-design", label: "Design Gráfico" },
@@ -26,7 +26,7 @@ export const projects = [
     skills: [
       "Estratégia de conteúdos",
       "Design para redes sociais",
-      "Tom de marca",
+      "Identidade visual",
       "Ligação à comunidade",
     ],
     summary:
@@ -38,10 +38,12 @@ export const projects = [
     objective:
       "Tornar a comunicação do curso mais atual, próxima e consistente, reforçando a ligação com a comunidade académica.",
     deliverables: [
-      "Estratégia editorial para redes sociais",
-      "Peças gráficas e templates de publicação",
-      "Definição de tom visual e comunicacional",
-      "Conteúdos para a presença digital do curso",
+      "Estratégia de comunicação digital",
+      "Identidade visual completa",
+      "Plano editorial",
+      "Produção de conteúdos",
+      "Gestão das redes sociais",
+      "Relatório de resultados",
     ],
     result:
       "Uma base editorial e visual mais jovem e coerente, preparada para tornar a presença online do curso mais reconhecível e próxima.",
@@ -54,12 +56,13 @@ export const projects = [
     type: "Campanha Transmedia",
     year: "2025",
     accent: "#d62839",
-    image: "/assets/Portfólio/site/cicatriz-screen.jpg",
-    modalImage: "/assets/Portfólio/site/cicatriz-screen.jpg",
+    image: "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
+    modalImage: "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
+    imageFit: "mockup",
     gallery: [
-      "/assets/Portfólio/site/cicatriz-screen.jpg",
-      "/assets/Portfólio/site/cicatriz-phone-1.jpg",
-      "/assets/Portfólio/site/cicatriz-phone-2.jpg",
+      "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
+      "/assets/Portfólio/cicatriz/cicatriz-phone-transparent.png",
+      "/assets/Portfólio/cicatriz/cicatriz-phone-alt-transparent.png",
     ],
     modalFit: "contain",
     selected: true,
@@ -72,53 +75,21 @@ export const projects = [
     summary:
       "Campanha de sensibilização Cicatriz - Histórias Sobre o Cancro, com conteúdos digitais, narrativa sensível e uma presença visual coerente em várias plataformas.",
     description:
-      "Criação de conteúdos e elementos visuais para a campanha transmedia Cicatriz - Histórias Sobre o Cancro, um projeto de sensibilização que utiliza diferentes plataformas digitais para promover o diálogo sobre o cancro através de histórias reais. O trabalho envolveu o desenvolvimento de conteúdos para redes sociais, adaptação de formatos e construção de uma comunicação visual consistente.",
+      "Criação de conteúdos e elementos visuais para a campanha transmedia Cicatriz - Histórias Sobre o Cancro, um projeto de sensibilização que utiliza diferentes plataformas digitais para promover o diálogo sobre o cancro através de histórias reais. O trabalho envolveu o desenvolvimento de conteúdos para redes sociais, adaptação de formatos e a produção de uma websérie.",
     role:
       "Criação de conteúdos, adaptação visual entre plataformas e apoio à construção da linguagem da campanha.",
     objective:
       "Sensibilizar para o tema do cancro através de uma comunicação empática, clara e consistente em vários formatos.",
     deliverables: [
-      "Conteúdos para redes sociais",
-      "Peças visuais para campanha transmedia",
-      "Adaptação de formatos para diferentes plataformas",
-      "Sistema visual de apoio à narrativa",
+      "Estratégia de comunicação digital",
+      "Identidade visual completa",
+      "Produção de conteúdos",
+      "Gestão das redes sociais",
+      "Websérie",
     ],
     result:
       "Uma presença digital sensível e coesa, capaz de sustentar a campanha em vários pontos de contacto.",
     credits: "Alexandre Martins, Joana Alves, Maria Eduarda Terra, Sandra Silva e Tiago Assunção",
-  },
-  {
-    id: "espetaculo-danca-cv",
-    title: "Espetáculo de dança CV",
-    category: "video-photo",
-    type: "Fotografia de espetáculo",
-    year: "2025",
-    accent: "#f19644",
-    image: "/assets/Portfólio/Fotografias/Eventos/IMG_1525 1.jpg",
-    modalImage: "/assets/Portfólio/Fotografias/Eventos/IMG_1614 2.jpg",
-    gallery: [
-      "/assets/Portfólio/Fotografias/Eventos/IMG_1274 1.jpg",
-      "/assets/Portfólio/Fotografias/Eventos/IMG_1525 1.jpg",
-      "/assets/Portfólio/Fotografias/Eventos/IMG_1614 2.jpg",
-    ],
-    selected: true,
-    skills: ["Fotografia de espetáculo", "Iluminação de palco", "Narrativa visual"],
-    summary:
-      "Cobertura visual de um espetáculo de dança com foco em movimento, expressão corporal e atmosfera cénica.",
-    description:
-      "Registo fotográfico de um espetáculo de dança pensado para captar o movimento, a tensão e a expressividade de cada momento em palco. A série privilegia luz, composição e tempo para transformar a performance numa narrativa visual com ritmo próprio.",
-    role:
-      "Captação fotográfica do espetáculo e seleção de imagens com foco em movimento, luz e expressão.",
-    objective:
-      "Traduzir a energia da performance em imagens fortes, úteis tanto para memória do evento como para comunicação.",
-    deliverables: [
-      "Cobertura fotográfica em palco",
-      "Seleção e edição de imagens",
-      "Registo de momentos-chave da performance",
-      "Série visual pronta para divulgação",
-    ],
-    result:
-      "Uma coleção de fotografias com impacto visual, capaz de prolongar a atmosfera do espetáculo fora do palco.",
   },
   {
     id: "jornal-da-mealhada",
@@ -199,6 +170,14 @@ export const projects = [
     year: "2024",
     accent: "#0f9ec1",
     artwork: "marinha",
+    videos: [
+      {
+        title: "Demo do jogo Missão Marinha",
+        type: "local",
+        src: "/assets/Portfólio/Marinha/Missãomarinha_Demo.mov",
+        posterTime: 6,
+      },
+    ],
     skills: ["Design de jogo", "JavaScript", "Interação educativa"],
     summary:
       "Jogo educativo sobre preservação marinha, combinando design visual, narrativa acessível e programação em JavaScript.",
@@ -230,6 +209,13 @@ export const projects = [
     cardArtwork: "lousa",
     gallery: ["/assets/Portfólio/LousaExpress/tittlescreen.jpg 1.jpg"],
     modalFit: "contain",
+    videos: [
+      {
+        title: "Vídeo do projeto Lousã Express",
+        type: "youtube",
+        youtubeId: "g6fhAknFQAA",
+      },
+    ],
     skills: ["Sistemas de jogo 2D", "Identidade visual", "Narrativa promocional"],
     summary:
       "Jogo 2D educativo e promocional sobre a cultura gastronómica da Lousã, pensado para cruzar aprendizagem e identidade local.",
@@ -254,7 +240,7 @@ export const projects = [
     title: "SolD’alma",
     category: "social-media",
     type: "Gestão e criação de conteúdos",
-    year: "2026",
+    year: "A decorrer",
     accent: "#cf5e57",
     image: "/assets/Portfólio/Soldalma/soldalma-transparent.png",
     modalImage: "/assets/Portfólio/Soldalma/soldalma-transparent.png",
@@ -263,18 +249,17 @@ export const projects = [
     modalFit: "contain",
     skills: ["Criação de conteúdos", "Vídeo curto", "Envolvimento da comunidade"],
     summary:
-      "Criação e gestão de conteúdos para a Associação de Teatro SolD’alma, com foco em visibilidade, ritmo editorial e ligação à comunidade.",
+      "Criação e gestão de conteúdos para a Associação de Teatro SolD’alma, com foco em visibilidade, divulgação do trabalho e ligação à comunidade.",
     description:
       "Criação e gestão de conteúdos para as redes sociais da Associação de Teatro SolD’alma, incluindo o desenvolvimento de conteúdos visuais, produção de vídeos curtos e adaptação da comunicação às características de cada plataforma, com o objetivo de aumentar a visibilidade e interação da marca.",
     role:
-      "Criação e gestão de conteúdos para redes sociais, com foco em visibilidade, ritmo editorial e adaptação de formatos.",
+      "Criação e gestão de conteúdos para redes sociais, com foco em visibilidade e proximidade com o público.",
     objective:
       "Reforçar a presença digital da associação e aumentar a ligação com a comunidade através de conteúdos mais regulares.",
     deliverables: [
       "Planeamento e criação de conteúdos",
       "Vídeos curtos para redes sociais",
       "Peças visuais adaptadas por plataforma",
-      "Apoio à comunicação editorial",
     ],
     result:
       "Uma presença social mais ativa e reconhecível, alinhada com o dinamismo da associação.",
@@ -320,6 +305,13 @@ export const projects = [
     modalImage: "/assets/Portfólio/site/ruptura-screen.jpg",
     cardArtwork: "ruptura",
     gallery: ["/assets/Portfólio/site/ruptura-screen.jpg"],
+    videos: [
+      {
+        title: "Vídeo do projeto Ruptura",
+        type: "youtube",
+        youtubeId: "nbKRe5vkdjc",
+      },
+    ],
     skills: ["Produção audiovisual", "Promoção digital", "Direção criativa"],
     summary:
       "Produção audiovisual e conteúdos digitais para uma curta-metragem, equilibrando linguagem sensível com presença promocional.",
@@ -349,12 +341,22 @@ export const projects = [
     image: "/assets/Portfólio/Fotografias/Eventos/IMG_2219 1.jpg",
     modalImage: "/assets/Portfólio/Fotografias/Eventos/IMG_2412 1.jpg",
     gallery: [
+      "/assets/Portfólio/Fotografias/Eventos/IMG_1274 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_1525 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_1614 2.jpg",
       "/assets/Portfólio/Fotografias/Eventos/IMG_2219 1.jpg",
       "/assets/Portfólio/Fotografias/Eventos/IMG_2250 1.jpg",
       "/assets/Portfólio/Fotografias/Eventos/IMG_2412 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_2449 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_4187 1.jpg",
       "/assets/Portfólio/Fotografias/Eventos/IMG_4886 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_5074 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_5294 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_5313 1.jpg",
+      "/assets/Portfólio/Fotografias/Eventos/IMG_5799 1.jpg",
     ],
-    skills: ["Cobertura de eventos", "Fotografia documental", "Edição visual rápida"],
+    selected: true,
+    skills: ["Cobertura de eventos", "Fotografia de espetáculo", "Edição visual rápida"],
     summary:
       "Fotografia de espetáculos, eventos políticos, galas e momentos sociais, captando energia, presença e contexto em tempo real.",
     description:
@@ -382,6 +384,9 @@ export const projects = [
     image: "/assets/Portfólio/Fotografias/desporto/IMG_3593 1.jpg",
     modalImage: "/assets/Portfólio/Fotografias/desporto/IMG_1370 1.jpg",
     gallery: [
+      "/assets/Portfólio/Fotografias/desporto/IMG_0497 1.jpg",
+      "/assets/Portfólio/Fotografias/desporto/IMG_0528 1.jpg",
+      "/assets/Portfólio/Fotografias/desporto/IMG_0559 1.jpg",
       "/assets/Portfólio/Fotografias/desporto/IMG_0672 1.jpg",
       "/assets/Portfólio/Fotografias/desporto/IMG_1256 1.jpg",
       "/assets/Portfólio/Fotografias/desporto/IMG_1370 1.jpg",

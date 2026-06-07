@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { assetPath } from "../utils/assets";
 
 function DecorativeStars() {
@@ -12,8 +13,119 @@ function DecorativeStars() {
   );
 }
 
-export function ProjectArtwork({ project }) {
+function getPrimaryVideo(project) {
+  return project?.videos?.[0] ?? null;
+}
+
+function getYoutubeThumbnail(video) {
+  return `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`;
+}
+
+function getYoutubePreviewUrl(video) {
+  const id = video.youtubeId;
+
+  return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&playsinline=1&rel=0&modestbranding=1`;
+}
+
+function ProjectVideoCover({ project, video, active, showHoverHint }) {
+  const videoRef = useRef(null);
+  const isYoutube = video.type === "youtube";
+  const posterTime = video.posterTime ?? 0;
+
+  useEffect(() => {
+    if (isYoutube || !videoRef.current) {
+      return;
+    }
+
+    if (active) {
+      if (videoRef.current.currentTime < posterTime) {
+        videoRef.current.currentTime = posterTime;
+      }
+
+      videoRef.current.play()?.catch(() => {});
+      return;
+    }
+
+    videoRef.current.pause();
+
+    try {
+      videoRef.current.currentTime = posterTime;
+    } catch {
+      // Some browsers block seeking until metadata is loaded.
+    }
+  }, [active, isYoutube, posterTime]);
+
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-[#170a12]">
+      {isYoutube ? (
+        <>
+          <img
+            src={getYoutubeThumbnail(video)}
+            alt={project.title}
+            className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${
+              active ? "scale-105 opacity-0" : "scale-100 opacity-100"
+            }`}
+          />
+
+          {active ? (
+            <iframe
+              title={video.title ?? project.title}
+              src={getYoutubePreviewUrl(video)}
+              className="pointer-events-none absolute inset-0 h-full w-full scale-[1.03]"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : null}
+        </>
+      ) : (
+        <video
+          ref={videoRef}
+          src={assetPath(video.src)}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
+          muted
+          loop
+          onLoadedMetadata={(event) => {
+            if (!active) {
+              event.currentTarget.currentTime = posterTime;
+            }
+          }}
+          playsInline
+          preload="metadata"
+        />
+      )}
+
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(23,10,18,0.02)_0%,rgba(23,10,18,0.22)_100%)]" />
+      <div className="pointer-events-none absolute left-5 top-5 rounded-full border border-white/55 bg-white/78 px-3 py-1 text-[0.62rem] font-black uppercase tracking-[0.24em] text-cherry shadow-[0_10px_18px_rgba(91,43,69,0.1)] backdrop-blur-sm">
+        Vídeo
+      </div>
+      {showHoverHint ? (
+        <div
+          className={`pointer-events-none absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-ink shadow-[0_12px_22px_rgba(20,8,16,0.14)] backdrop-blur-sm transition duration-300 ${
+            active ? "translate-y-1 opacity-0" : "translate-y-0 opacity-100"
+          }`}
+        >
+          <span className="h-2.5 w-2.5 rounded-full bg-cherry" />
+          Passa o rato
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function ProjectArtwork({ project, previewActive = false, showHoverHint = true }) {
+  const primaryVideo = getPrimaryVideo(project);
   const artwork = project.cardArtwork ?? project.artwork;
+
+  if (primaryVideo) {
+    return (
+      <ProjectVideoCover
+        project={project}
+        video={primaryVideo}
+        active={previewActive}
+        showHoverHint={showHoverHint}
+      />
+    );
+  }
 
   if (project.image && !project.cardArtwork) {
     const fit = project.imageFit ?? "cover";
@@ -21,7 +133,7 @@ export function ProjectArtwork({ project }) {
 
     if (fit === "mockup") {
       return (
-        <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_16%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fffaf8_0%,#f7dbe5_100%)] p-5">
+        <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_16%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fffaf8_0%,#f7dbe5_100%)] p-5 sm:p-6">
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.62),transparent_38%,rgba(221,28,93,0.08))]" />
           <img
             src={assetPath(project.image)}

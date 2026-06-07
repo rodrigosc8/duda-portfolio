@@ -7,7 +7,7 @@ export const navigationLinks = [
 
 export const heroHighlights = [
   {
-    title: "Design Gráfico",
+    title: "Design",
     icon: "pencil",
   },
   {
@@ -22,9 +22,9 @@ export const heroHighlights = [
 
 export const aboutParagraphs = [
   "Sou a Maria Eduarda, mas quase toda a gente me conhece por Duda!",
-  "Sou estudante do terceiro ano de Multimédia e Tecnologias da Comunicação, com uma paixão por narrativa, design e comunicação digital. Ao longo do meu percurso académico, tenho explorado áreas como a criação de conteúdos para redes sociais, a produção audiovisual, a fotografia e o design visual, desenvolvendo um interesse cada vez maior pela forma como a criatividade pode aproximar pessoas e comunicar ideias.",
-  "Considero-me uma pessoa criativa, organizada e curiosa, sempre à procura de novos desafios e oportunidades para aprender.",
-  "Através do meu trabalho, procuro criar experiências com significado, que inspirem, liguem pessoas e deixem uma impressão duradoura, transformando ideias em histórias, visuais e conteúdos com que as pessoas se possam realmente identificar.",
+  "Sou estudante do terceiro ano de Multimédia e Tecnologias da Comunicação, com uma paixão por design, narrativa, fotografia e comunicação digital.",
+  "Gosto de transformar ideias em conteúdos visuais claros, próximos e memoráveis, capazes de aproximar pessoas e contar histórias com intenção.",
+  "Sou criativa, organizada e curiosa. No meu trabalho, procuro criar experiências com significado: projetos que inspirem, comuniquem bem e deixem uma marca visual duradoura.",
 ];
 
 export const whyCreateCopy =

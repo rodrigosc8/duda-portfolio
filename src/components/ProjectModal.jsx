@@ -26,6 +26,18 @@ function getGalleryItems(project) {
   return [...new Set(items)];
 }
 
+function getProjectVideos(project) {
+  return project?.videos?.filter(Boolean) ?? [];
+}
+
+function getYoutubeEmbedUrl(video) {
+  if (video.youtubeId) {
+    return `https://www.youtube-nocookie.com/embed/${video.youtubeId}`;
+  }
+
+  return video.src;
+}
+
 function MetaPill({ accent, filled = false, children }) {
   return (
     <span
@@ -66,6 +78,41 @@ function HighlightBlock({ label, accent, children }) {
     >
       <p className="text-[0.72rem] font-black uppercase tracking-[0.24em] text-cherry/72">{label}</p>
       <div className="mt-3 text-sm leading-7 text-ink/80 sm:text-[0.98rem]">{children}</div>
+    </section>
+  );
+}
+
+function ProjectVideo({ video, accent }) {
+  const isYoutube = video.type === "youtube";
+
+  return (
+    <section
+      className="rounded-[1.5rem] border bg-white/72 p-3 shadow-[0_14px_30px_rgba(92,38,64,0.08)]"
+      style={{ borderColor: hexToRgba(accent, 0.14) }}
+    >
+      <p className="mb-3 text-[0.68rem] font-black uppercase tracking-[0.22em] text-cherry/70">
+        Vídeo do projeto
+      </p>
+
+      {isYoutube ? (
+        <iframe
+          title={video.title}
+          src={getYoutubeEmbedUrl(video)}
+          className="aspect-video w-full rounded-[1.1rem] bg-ink/10"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : (
+        <video
+          src={assetPath(video.src)}
+          className="aspect-video w-full rounded-[1.1rem] bg-ink/10 object-contain"
+          controls
+          playsInline
+          preload="metadata"
+        >
+          O teu browser não suporta vídeo HTML5.
+        </video>
+      )}
     </section>
   );
 }
@@ -126,7 +173,7 @@ function MediaCard({ project, activeImage, accent, fit = "cover", onOpenImage })
         </button>
       ) : (
         <div className="h-[20rem] overflow-hidden rounded-[1.35rem] sm:h-[23rem] lg:h-[25rem]">
-          <ProjectArtwork project={project} />
+          <ProjectArtwork project={project} showHoverHint={false} />
         </div>
       )}
     </div>
@@ -268,6 +315,18 @@ export function ProjectModal({ project, onClose }) {
                       ))}
                     </div>
                   ) : null}
+
+                  {getProjectVideos(project).length ? (
+                    <div className="mt-4 space-y-3">
+                      {getProjectVideos(project).map((video) => (
+                        <ProjectVideo
+                          key={video.title ?? video.src ?? video.youtubeId}
+                          video={video}
+                          accent={project.accent}
+                        />
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
 
                 <div className="min-h-0 px-4 pb-5 pt-16 sm:px-6 sm:pb-6 sm:pt-[4.5rem] lg:overflow-y-auto lg:px-7 lg:pb-7 lg:pt-7">
@@ -323,26 +382,6 @@ export function ProjectModal({ project, onClose }) {
                         </div>
                       </InfoBlock>
                     ) : null}
-                  </div>
-
-                  <div className="mt-6">
-                    <p className="text-[0.72rem] font-black uppercase tracking-[0.24em] text-cherry/72">
-                      Competências
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {project.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="rounded-full border px-3 py-2 text-[0.82rem] font-semibold text-ink/78"
-                          style={{
-                            borderColor: hexToRgba(project.accent, 0.14),
-                            backgroundColor: "rgba(255,255,255,0.76)",
-                          }}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
                   {project.credits ? (
