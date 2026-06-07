@@ -68,4 +68,8 @@ a {
   .ink-copy {
     @apply text-sm leading-7 text-ink/90 sm:text-base;
   }
+
+  .text-copy {
+    @apply font-text text-sm font-medium leading-7 text-ink/90 sm:text-base;
+  }
 }

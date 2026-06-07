@@ -37,7 +37,7 @@ export function AboutSection() {
                 </p>
 
                 {aboutParagraphs.slice(1).map((paragraph) => (
-                  <p key={paragraph} className="ink-copy max-w-[39rem] text-[0.95rem] leading-7 sm:text-[1rem]">
+                  <p key={paragraph} className="text-copy max-w-[39rem] text-[0.95rem] leading-7 sm:text-[1rem]">
                     {paragraph}
                   </p>
                 ))}

@@ -27,10 +27,10 @@ export function SelectedWorkSection({ projects, onOpen }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.65 }}
-            className="relative"
+            className="relative pt-5 sm:pt-7"
           >
-            <p className="section-kicker text-center text-white/80">Projetos em destaque</p>
-            <h2 className="mt-4 text-center font-script text-[clamp(3.2rem,5.6vw,5.4rem)] leading-none text-white drop-shadow-[0_10px_18px_rgba(120,35,71,0.22)]">
+            <p className="section-kicker text-center">Projetos em destaque</p>
+            <h2 className="hand-title mt-4 text-center text-[clamp(3.2rem,5.6vw,5.4rem)] leading-none">
               Algumas coisas em que tenho andado a trabalhar.
             </h2>
 

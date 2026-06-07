@@ -36,13 +36,13 @@ export function ContactSection() {
 
           <div className="relative space-y-8">
             <div className="max-w-[54rem]">
-              <p className="section-kicker text-white drop-shadow-[0_3px_5px_rgba(105,27,58,0.18)]">
+              <p className="section-kicker">
                 Contacto
               </p>
-              <h2 className="mt-3 max-w-[48rem] font-script text-[clamp(2.85rem,4.8vw,4.4rem)] leading-[0.98] text-white drop-shadow-[0_5px_8px_rgba(105,27,58,0.2)]">
+              <h2 className="hand-title mt-3 max-w-[48rem] text-[clamp(2.85rem,4.8vw,4.4rem)] leading-[0.98]">
                 Vamos dar forma à próxima grande ideia?
               </h2>
-              <p className="mt-5 max-w-[43rem] text-[1rem] leading-8 text-cherryDark/[0.86]">
+              <p className="mt-5 max-w-[43rem] font-text text-[1rem] font-medium leading-8 text-cherryDark/[0.86]">
                 Se algum projeto te chamou a atenção, fico disponível para conversar sobre design,
                 comunicação digital, vídeo, fotografia ou ideias que ainda precisam de ganhar forma
                 visual.

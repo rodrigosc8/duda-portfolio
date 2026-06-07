@@ -22,7 +22,7 @@ export function WhyCreateSection() {
               <h3 className="mt-4 flex min-h-[7.4rem] max-w-[34rem] items-start font-script text-[clamp(2.35rem,3.4vw,3.55rem)] font-bold uppercase leading-[1.02] text-cherry">
                 Porque crio
               </h3>
-              <p className="mt-5 ink-copy max-w-[39rem]">
+              <p className="text-copy mt-5 max-w-[39rem]">
                 {whyCreateCopy}
               </p>
             </div>
@@ -32,7 +32,7 @@ export function WhyCreateSection() {
               <h3 className="mt-4 flex min-h-[7.4rem] max-w-[34rem] items-start font-script text-[clamp(2.35rem,3.4vw,3.55rem)] leading-[1.02] text-cherry">
                 Primeiro a história, depois os visuais com atitude.
               </h3>
-              <p className="mt-5 ink-copy max-w-[38rem]">
+              <p className="text-copy mt-5 max-w-[38rem]">
                 Gosto de projetos pensados, emocionalmente claros e visualmente memoráveis. O
                 objetivo nunca é só fazer algo bonito. É fazer algo vivo, útil e claramente pensado
                 para as pessoas a quem se quer chegar.

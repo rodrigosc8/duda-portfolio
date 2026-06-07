@@ -65,6 +65,13 @@ export const projects = [
       "/assets/Portfólio/cicatriz/cicatriz-phone-alt-transparent.png",
     ],
     modalFit: "contain",
+    videos: [
+      {
+        title: "Vídeo do projeto Cicatriz",
+        type: "youtube",
+        youtubeId: "dxqw_BV7Qx0",
+      },
+    ],
     selected: true,
     skills: [
       "Narrativa",
@@ -213,7 +220,7 @@ export const projects = [
       {
         title: "Vídeo do projeto Lousã Express",
         type: "youtube",
-        youtubeId: "g6fhAknFQAA",
+        youtubeId: "LTtLn60jEPM",
       },
     ],
     skills: ["Sistemas de jogo 2D", "Identidade visual", "Narrativa promocional"],

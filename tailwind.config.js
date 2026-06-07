@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         sans: ["Manrope", "sans-serif"],
         script: ["Caveat", "cursive"],
+        text: ["Poppins", "sans-serif"],
       },
       boxShadow: {
         paper: "0 16px 36px rgba(103, 45, 68, 0.14)",
