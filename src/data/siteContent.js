@@ -30,57 +30,6 @@ export const aboutParagraphs = [
 export const whyCreateCopy =
   "Sempre adorei transformar ideias em algo que as pessoas possam realmente ver, sentir e com que possam interagir. Seja um site, uma campanha para redes sociais, uma curta-metragem ou uma identidade visual, gosto de dar vida aos conceitos através do design e da narrativa.";
 
-export const obsessionItems = [
-  {
-    name: "Máquina rosa",
-    image: "/assets/Portfólio/site/obsession-camera.png",
-    rotate: -6,
-  },
-  {
-    name: "Frappé e bolacha",
-    image: "/assets/Portfólio/site/obsession-frappe.png",
-    rotate: 4,
-  },
-  {
-    name: "Livro aberto",
-    image: "/assets/Portfólio/site/obsession-book.png",
-    rotate: 8,
-  },
-];
-
-export const toolPlateItems = [
-  {
-    label: "Figma",
-    image: "/assets/Portfólio/site/tool-figma.png",
-    className: "left-[10%] top-[15%]",
-    rotate: -12,
-  },
-  {
-    label: "Photoshop",
-    image: "/assets/Portfólio/site/tool-photoshop.png",
-    className: "left-[42%] top-[2%]",
-    rotate: 6,
-  },
-  {
-    label: "VS Code",
-    image: "/assets/Portfólio/site/tool-vscode.png",
-    className: "right-[10%] top-[16%]",
-    rotate: -4,
-  },
-  {
-    label: "DaVinci Resolve",
-    image: "/assets/Portfólio/site/tool-davinci.png",
-    className: "left-[42%] top-[37%]",
-    rotate: 9,
-  },
-  {
-    label: "Unity",
-    image: "/assets/Portfólio/site/tool-unity.png",
-    className: "right-[7%] top-[43%]",
-    rotate: -8,
-  },
-];
-
 export const contactLinks = [
   {
     label: "Instagram",

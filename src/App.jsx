@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { AboutSection } from "./components/AboutSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
-import { FunSection } from "./components/FunSection";
 import { HeroSection } from "./components/HeroSection";
 import { Navbar } from "./components/Navbar";
 import { ProjectModal } from "./components/ProjectModal";
@@ -34,7 +33,7 @@ function App() {
   const selectedWork = projects.filter((project) => project.selected);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-x-hidden">
       <div className="absolute inset-x-0 top-0 -z-10 h-[38rem] bg-gradient-to-b from-[#fffefe]/75 via-white/30 to-transparent" />
 
       <Navbar />
@@ -44,7 +43,6 @@ function App() {
         <SelectedWorkSection projects={selectedWork} onOpen={setSelectedProject} />
         <AboutSection />
         <WhyCreateSection />
-        <FunSection />
         <WorkSection projects={projects} onOpen={setSelectedProject} />
         <ContactSection />
       </main>

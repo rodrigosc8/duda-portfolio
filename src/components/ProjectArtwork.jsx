@@ -13,8 +13,25 @@ function DecorativeStars() {
 }
 
 export function ProjectArtwork({ project }) {
-  if (project.image) {
+  const artwork = project.cardArtwork ?? project.artwork;
+
+  if (project.image && !project.cardArtwork) {
     const fit = project.imageFit ?? "cover";
+    const position = project.imagePosition ?? "center";
+
+    if (fit === "mockup") {
+      return (
+        <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_16%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fffaf8_0%,#f7dbe5_100%)] p-5">
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.62),transparent_38%,rgba(221,28,93,0.08))]" />
+          <img
+            src={assetPath(project.image)}
+            alt={project.title}
+            className="relative z-10 h-full w-full object-contain drop-shadow-[0_18px_28px_rgba(91,43,69,0.12)] transition duration-500 group-hover:scale-[1.035]"
+            style={{ objectPosition: position }}
+          />
+        </div>
+      );
+    }
 
     if (fit === "social") {
       return (
@@ -23,17 +40,38 @@ export function ProjectArtwork({ project }) {
             src={assetPath(project.image)}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-[0.14] blur-md"
+            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-[0.16] blur-xl"
+            style={{ objectPosition: position }}
           />
-          <div className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/70 px-3 py-1 text-[0.62rem] font-black uppercase tracking-[0.24em] text-cherry shadow-[0_10px_18px_rgba(91,43,69,0.08)]">
+          <div className="absolute left-5 top-5 z-10 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-[0.62rem] font-black uppercase tracking-[0.24em] text-cherry shadow-[0_10px_18px_rgba(91,43,69,0.08)]">
             Perfil social
           </div>
-          <div className="absolute inset-0 flex items-center justify-center px-8 py-5">
-            <div className="relative h-full max-h-[92%] aspect-[7/20] overflow-hidden rounded-[1.35rem] border border-white/80 bg-white shadow-[0_18px_34px_rgba(91,43,69,0.16)]">
+          <div className="absolute inset-x-8 bottom-5 top-14 overflow-hidden rounded-[1.5rem] border border-white/80 bg-white shadow-[0_18px_34px_rgba(91,43,69,0.16)]">
+            <img
+              src={assetPath(project.image)}
+              alt={project.title}
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
+              style={{ objectPosition: position }}
+            />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/55 to-transparent" />
+          </div>
+        </div>
+      );
+    }
+
+    if (fit === "interface") {
+      return (
+        <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.9),transparent_32%),linear-gradient(135deg,#141a36_0%,#3654ca_48%,#f2b6d2_100%)] p-5">
+          <div className="absolute left-5 top-5 z-10 rounded-full border border-white/25 bg-white/18 px-3 py-1 text-[0.62rem] font-black uppercase tracking-[0.24em] text-white shadow-[0_10px_18px_rgba(25,20,60,0.18)] backdrop-blur-sm">
+            Interface
+          </div>
+          <div className="flex h-full items-center justify-center pt-8">
+            <div className="relative h-[88%] w-[70%] overflow-hidden rounded-[1.35rem] border border-white/30 bg-white shadow-[0_22px_38px_rgba(16,23,67,0.28)]">
               <img
                 src={assetPath(project.image)}
                 alt={project.title}
-                className="h-full w-full object-contain"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
+                style={{ objectPosition: position }}
               />
             </div>
           </div>
@@ -48,11 +86,12 @@ export function ProjectArtwork({ project }) {
         className={`h-full w-full transition duration-500 group-hover:scale-[1.04] ${
           fit === "contain" ? "bg-[#fffaf7] object-contain p-4" : "object-cover"
         }`}
+        style={{ objectPosition: position }}
       />
     );
   }
 
-  if (project.artwork === "cosmo") {
+  if (artwork === "cosmo") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_top,#3858d7_0%,#152c70_38%,#090d22_100%)]">
         <DecorativeStars />
@@ -66,7 +105,7 @@ export function ProjectArtwork({ project }) {
     );
   }
 
-  if (project.artwork === "marinha") {
+  if (artwork === "marinha") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[linear-gradient(180deg,#60d6ef_0%,#0d7ca6_45%,#08304f_100%)]">
         <div className="absolute inset-x-0 bottom-0 h-20 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_62%)]" />
@@ -81,7 +120,7 @@ export function ProjectArtwork({ project }) {
     );
   }
 
-  if (project.artwork === "lousa") {
+  if (artwork === "lousa") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[linear-gradient(180deg,#fdd7b2_0%,#f2a55c_44%,#8e4333_100%)]">
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -94,7 +133,7 @@ export function ProjectArtwork({ project }) {
     );
   }
 
-  if (project.artwork === "ruptura") {
+  if (artwork === "ruptura") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[linear-gradient(180deg,#121212_0%,#1b0b1d_55%,#392135_100%)]">
         <div className="absolute inset-y-0 left-0 w-5 bg-black/30" />
@@ -107,7 +146,7 @@ export function ProjectArtwork({ project }) {
     );
   }
 
-  if (project.artwork === "nexus") {
+  if (artwork === "nexus") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[linear-gradient(180deg,#fff6ea_0%,#f7e1d2_100%)]">
         <div className="absolute left-8 top-8 text-5xl font-black uppercase tracking-[0.18em] text-[#1f1633]">
@@ -121,7 +160,7 @@ export function ProjectArtwork({ project }) {
     );
   }
 
-  if (project.artwork === "fact") {
+  if (artwork === "fact") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[linear-gradient(180deg,#0e1723_0%,#18293e_100%)]">
         <div className="absolute left-6 top-6 rounded-full bg-[#b8ff47] px-4 py-1 text-xs font-black uppercase tracking-[0.32em] text-[#111d1b]">

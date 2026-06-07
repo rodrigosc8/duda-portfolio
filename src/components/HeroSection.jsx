@@ -12,10 +12,10 @@ const iconMap = {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden pt-8 sm:pt-10">
+    <section id="home" className="relative overflow-hidden pt-4 sm:pt-5">
       <div className="page-shell">
-        <div className="relative overflow-hidden rounded-[2.7rem] px-2 pb-14 pt-8 sm:px-4 lg:px-8 lg:pb-20 lg:pt-10">
-          <div className="absolute inset-x-0 bottom-0 h-[11rem] sm:h-[12.5rem] lg:h-[15rem]">
+        <div className="relative overflow-hidden rounded-[2.7rem] px-2 pb-14 pt-4 sm:px-4 sm:pt-5 lg:px-8 lg:pb-20 lg:pt-4">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[11rem] sm:h-[12.5rem] lg:h-[15rem]">
             <MaskedAsset
               backgroundImage='linear-gradient(180deg, rgba(250, 205, 219, 0.96), rgba(241, 170, 193, 0.92)), url("/assets/collage/paper-texture.jpg")'
               mask="/assets/collage/pink-paper-mask.png"
@@ -27,12 +27,12 @@ export function HeroSection() {
             />
           </div>
 
-          <div className="relative grid items-end gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-4">
+          <div className="relative z-10 grid items-start gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-4">
             <motion.div
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="max-w-[46rem] pt-10 lg:pt-12"
+              className="relative z-30 max-w-[46rem] pt-5 sm:pt-6 lg:pt-10"
             >
               <p className="mb-2 text-[clamp(2.9rem,6.6vw,5.6rem)] font-semibold leading-[0.95] text-cherry">
                 Olá, eu sou
@@ -66,7 +66,7 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            <div className="relative mx-auto flex min-h-[560px] w-full max-w-[39rem] items-end justify-center lg:min-h-[650px] lg:max-w-[45rem] lg:justify-end">
+            <div className="relative z-10 mx-auto flex min-h-[560px] w-full max-w-[39rem] items-end justify-center lg:min-h-[650px] lg:max-w-[45rem] lg:justify-end">
               <motion.div
                 initial={{ opacity: 0, x: 34, rotate: 3 }}
                 animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -82,7 +82,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="relative mt-10 flex items-center justify-center gap-3 pb-2 pt-6 text-center">
+          <div className="relative z-30 mt-10 flex items-center justify-center gap-3 pb-2 pt-6 text-center">
             <a
               href="#selected-work"
               className="font-script text-[2.2rem] font-semibold text-cherry transition hover:text-cherryDark"

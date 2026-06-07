@@ -100,23 +100,30 @@ function Thumb({ image, active, onClick, accent, index, fit = "cover" }) {
   );
 }
 
-function MediaCard({ project, activeImage, accent, fit = "cover" }) {
+function MediaCard({ project, activeImage, accent, fit = "cover", onOpenImage }) {
   return (
     <div className="rounded-[1.9rem] border border-white/80 bg-white/78 p-3 shadow-[0_16px_30px_rgba(92,38,64,0.1)] sm:p-4">
       {activeImage ? (
-        <motion.img
-          key={activeImage}
-          src={assetPath(activeImage)}
-          alt={project.title}
-          initial={{ opacity: 0, y: 8, scale: 0.992 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.22 }}
-          className={`h-[20rem] w-full rounded-[1.35rem] bg-[#fbf5f2] object-center sm:h-[23rem] lg:h-[25rem] ${
-            fit === "contain" ? "object-contain p-4" : "object-cover"
-          }`}
-          style={{ boxShadow: `0 18px 32px ${hexToRgba(accent, 0.1)}` }}
-        />
+        <button
+          type="button"
+          onClick={() => onOpenImage(activeImage)}
+          className="group/image block w-full cursor-zoom-in rounded-[1.35rem] text-left focus:outline-none focus:ring-2 focus:ring-cherry/45"
+          aria-label={`Ampliar imagem de ${project.title}`}
+        >
+          <motion.img
+            key={activeImage}
+            src={assetPath(activeImage)}
+            alt={project.title}
+            initial={{ opacity: 0, y: 8, scale: 0.992 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22 }}
+            className={`h-[20rem] w-full rounded-[1.35rem] bg-[#fbf5f2] object-center transition duration-300 group-hover/image:brightness-[0.98] sm:h-[23rem] lg:h-[25rem] ${
+              fit === "contain" ? "object-contain p-4" : "object-cover"
+            }`}
+            style={{ boxShadow: `0 18px 32px ${hexToRgba(accent, 0.1)}` }}
+          />
+        </button>
       ) : (
         <div className="h-[20rem] overflow-hidden rounded-[1.35rem] sm:h-[23rem] lg:h-[25rem]">
           <ProjectArtwork project={project} />
@@ -126,26 +133,80 @@ function MediaCard({ project, activeImage, accent, fit = "cover" }) {
   );
 }
 
+function ImageZoomOverlay({ image, title, fit = "cover", onClose }) {
+  return (
+    <AnimatePresence>
+      {image ? (
+        <motion.div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-[#160711]/78 p-4 backdrop-blur-md sm:p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={(event) => {
+            event.stopPropagation();
+            onClose();
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 18, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="relative max-h-[92vh] w-full max-w-[min(94vw,1180px)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Fechar imagem ampliada"
+              className="absolute -right-2 -top-12 inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/92 px-4 text-[0.72rem] font-black uppercase tracking-[0.2em] text-cherry shadow-[0_16px_30px_rgba(0,0,0,0.18)] transition hover:bg-white sm:right-0"
+            >
+              Fechar
+            </button>
+
+            <img
+              src={assetPath(image)}
+              alt={title}
+              className={`max-h-[88vh] w-full rounded-[1.4rem] bg-[#fffaf7] shadow-[0_28px_80px_rgba(0,0,0,0.34)] ${
+                fit === "contain" ? "object-contain p-3" : "object-contain"
+              }`}
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
 export function ProjectModal({ project, onClose }) {
   const [activeImage, setActiveImage] = useState(null);
+  const [zoomImage, setZoomImage] = useState(null);
   const mediaFit = project?.modalFit ?? project?.imageFit ?? "cover";
+
+  useEffect(() => {
+    setActiveImage(getGalleryItems(project)[0] ?? null);
+    setZoomImage(null);
+  }, [project]);
 
   useEffect(() => {
     if (!project) {
       return undefined;
     }
 
-    setActiveImage(getGalleryItems(project)[0] ?? null);
-
     const onKeyDown = (event) => {
       if (event.key === "Escape") {
+        if (zoomImage) {
+          setZoomImage(null);
+          return;
+        }
+
         onClose();
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [project, onClose]);
+  }, [project, onClose, zoomImage]);
 
   return (
     <AnimatePresence>
@@ -189,6 +250,7 @@ export function ProjectModal({ project, onClose }) {
                     activeImage={activeImage}
                     accent={project.accent}
                     fit={mediaFit}
+                    onOpenImage={setZoomImage}
                   />
 
                   {getGalleryItems(project).length > 1 ? (
@@ -305,6 +367,13 @@ export function ProjectModal({ project, onClose }) {
               </div>
             </motion.div>
           </div>
+
+          <ImageZoomOverlay
+            image={zoomImage}
+            title={project.title}
+            fit={mediaFit}
+            onClose={() => setZoomImage(null)}
+          />
         </motion.div>
       ) : null}
     </AnimatePresence>
