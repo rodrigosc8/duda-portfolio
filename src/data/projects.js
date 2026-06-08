@@ -59,6 +59,7 @@ export const projects = [
     image: "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
     modalImage: "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
     imageFit: "mockup",
+    mockupScale: 0.88,
     gallery: [
       "/assets/Portfólio/cicatriz/cicatriz-laptop-transparent.png",
       "/assets/Portfólio/cicatriz/cicatriz-phone-transparent.png",
@@ -72,6 +73,7 @@ export const projects = [
         youtubeId: "dxqw_BV7Qx0",
       },
     ],
+    videoAsCover: false,
     selected: true,
     skills: [
       "Narrativa",
@@ -211,10 +213,10 @@ export const projects = [
     type: "Design de jogo",
     year: "2025",
     accent: "#ef8a39",
-    image: "/assets/Portfólio/LousaExpress/tittlescreen.jpg 1.jpg",
-    modalImage: "/assets/Portfólio/LousaExpress/tittlescreen.jpg 1.jpg",
-    cardArtwork: "lousa",
-    gallery: ["/assets/Portfólio/LousaExpress/tittlescreen.jpg 1.jpg"],
+    image: "/assets/Portfólio/LousaExpress/lousa-express-laptop-transparent.png",
+    modalImage: "/assets/Portfólio/LousaExpress/lousa-express-laptop-transparent.png",
+    imageFit: "mockup",
+    gallery: ["/assets/Portfólio/LousaExpress/lousa-express-laptop-transparent.png"],
     modalFit: "contain",
     videos: [
       {
@@ -223,6 +225,8 @@ export const projects = [
         youtubeId: "LTtLn60jEPM",
       },
     ],
+    videoAsCover: false,
+
     skills: ["Sistemas de jogo 2D", "Identidade visual", "Narrativa promocional"],
     summary:
       "Jogo 2D educativo e promocional sobre a cultura gastronómica da Lousã, pensado para cruzar aprendizagem e identidade local.",

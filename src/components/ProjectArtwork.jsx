@@ -116,7 +116,7 @@ export function ProjectArtwork({ project, previewActive = false, showHoverHint =
   const primaryVideo = getPrimaryVideo(project);
   const artwork = project.cardArtwork ?? project.artwork;
 
-  if (primaryVideo) {
+  if (primaryVideo && project.videoAsCover !== false) {
     return (
       <ProjectVideoCover
         project={project}
@@ -132,14 +132,20 @@ export function ProjectArtwork({ project, previewActive = false, showHoverHint =
     const position = project.imagePosition ?? "center";
 
     if (fit === "mockup") {
+      const scale = project.mockupScale ?? 1;
+
       return (
-        <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_16%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fffaf8_0%,#f7dbe5_100%)] p-5 sm:p-6">
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_16%_18%,rgba(255,255,255,0.92),transparent_34%),linear-gradient(135deg,#fffaf8_0%,#f7dbe5_100%)] p-5 sm:p-6">
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.62),transparent_38%,rgba(221,28,93,0.08))]" />
           <img
             src={assetPath(project.image)}
             alt={project.title}
             className="relative z-10 h-full w-full object-contain drop-shadow-[0_18px_28px_rgba(91,43,69,0.12)] transition duration-500 group-hover:scale-[1.035]"
-            style={{ objectPosition: position }}
+            style={{
+              height: `${scale * 100}%`,
+              objectPosition: position,
+              width: `${scale * 100}%`,
+            }}
           />
         </div>
       );
